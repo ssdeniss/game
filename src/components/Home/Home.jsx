@@ -1,55 +1,76 @@
 import React from 'react'
-
+import Item from '../Item/Item'
 const GAMES = [
     {
-        image: '/game-covers/forza_5.jpeg',
+        image: '/forza_5.jpeg',
         title: 'Forza Horizon 5',
-        genres: ['Гонки', 'Симулятор', 'Открытый мир'],
+        genres: [
+            <p>Гонки</p>,
+            <p>Симулятор</p>,
+            <p>Открытый мир</p>
+        ],
         price: 2343,
         video: 'https://www.youtube.com/embed/FYH9n37B7Yw',
         id: 1,
         description: "Вас ждёт бесконечный калейдоскоп приключений Horizon! Совершайте увлекательные поездки по невероятно красивому и самобытному миру Мексики за рулём величайших автомобилей в истории. Начните своё приключение Horizon уже сегодня, добавив игру в свой список желаний!",
     },
     {
-        image: '../assets/battlefield_2042.jpg',
+        image: '/battlefield_2042.jpg',
         title: 'Battlefield 2042',
-        genres: ['Экшен', 'Шутер', 'Война'],
+        genres: [
+            <p>Экшен</p>,
+            <p>Шутер</p>,
+            <p>Война</p>
+        ],
         video: 'https://www.youtube.com/embed/ASzOzrB-a9E',
         price: 2433,
         id: 2,
         description: 'Battlefield™ 2042 — это шутер от первого лица, в котором серия возвращается к легендарным масштабным сражениям. В будущем, где царит хаос, адаптируйтесь и процветайте на постоянно меняющихся полях боя благодаря своему отряду и арсеналу новейших технологий.'
     },
     {
-        image: '../assets/life_is_strange_true_colors.jpeg',
+        image: '/life_is_strange_true_colors.jpeg',
         title: 'Life is Strange True Colors',
-        genres: ['Глубокий сюжет', 'Протагонистка'],
+        genres: [
+            <p>Глубокий сюжет</p>,
+            <p>Протагонистка</p>,
+        ],
         video: 'https://www.youtube.com/embed/b6CkzwVAr0M',
         price: 3021,
         id: 3,
         description: 'Алекс Чэнь от всех скрывает своё «проклятие» — сверхъестественную способность считывать сильные эмоции других и влиять на них. Но когда её брат погибает — якобы в результате несчастного случая, — Алекс использует её, чтобы узнать правду.'
     },
     {
-        image: '../assets/gta_v.jpeg',
+        image: '/gta_v.jpeg',
         title: 'Grand Theft Auto V',
-        genres: ['Открытый мир', 'Экшен'],
+        genres: [
+            <p>Открытый мир</p>,
+            <p>Экшен</p>,
+        ],
         video: 'https://www.youtube.com/embed/QkkoHAzjnUs',
         price: 789,
         id: 4,
         description: 'Grand Theft Auto V для PC позволяет игрокам исследовать знаменитый мир Лос-Сантоса и округа Блэйн в разрешении до 4k и выше с частотой 60 кадров в секунду.'
     },
     {
-        image: '../assets/rainbow_siege.jpeg',
-        title: 'Tom Clancy\'s Rainbow Six® Siege',
+        image: '/rainbow_siege.jpeg',
+        title: 'Tom Clancy\'s Rainbow Six',
         video: 'https://www.youtube.com/embed/6wlvYh0h63k',
-        genres: ['Тактика', 'Шутер'],
+        genres: [
+            <p>Тактика</p>,
+            <p>Шутер</p>,
+        ],
         price: 982,
         id: 5,
         description: 'Tom Clancy\'s Rainbow Six Осада – это продолжение нашумевшего шутера от первого лица, разработанного студией Ubisoft Montreal.'
     },
     {
-        image: '../assets/assassins_creed_valhalla.png',
+        image: '/assassins_creed_valhalla.png',
         title: 'Assassin’s Creed Valhalla',
-        genres: ['Паркур', 'РПГ', 'Открытый мир'],
+        genres: [
+            <p>Паркур</p>,
+            <p>РПГ</p>,
+            <p>Открытый мир</p>
+        ],
         video: 'https://www.youtube.com/embed/ssrNcwxALS4',
         price: 2863,
         id: 6,
@@ -58,9 +79,14 @@ const GAMES = [
 ]
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
+    return (
+        <div className="container">
+            <div className='home'>
+
+                {GAMES.map(game => <Item game={game} key={game.id} />)}
+            </div>
+        </div>
+    )
 }
 
 export default Home
