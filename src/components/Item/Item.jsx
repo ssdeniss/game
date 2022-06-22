@@ -1,24 +1,27 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setItemInCart } from '../../redux/reducer'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+import { setCurrentGame } from '../../redux/gameReducer';
+
+import { GameBuy } from './GameBuy';
 const Item = ({ game }) => {
     const dispatch = useDispatch()
-    const handleClick = (e) => {
-        e.stopPropagation()
-        dispatch(setItemInCart(game))
+    const navigate = useNavigate()
+    const items = useSelector(state => state.cart.itemsInCart)
+    const isItemInCart = items.some(item => item.id === game.id)
+    const aboutClick = () => {
+        dispatch(setCurrentGame(game));
+        navigate(`/app/${game.title}`)
     }
     return (
-        <div className='game__item'>
-            <div className="game__item-top" style={{ background: `url(${game.image})`, backgroundSize: "cover" }}></div>
+        <div className='game__item' >
+            <div className="game__item-top" onClick={aboutClick} style={{ background: `url(${game.image})`, backgroundSize: "cover" }}></div>
             <div className="game__content">
                 <div className="game__top">
                     <h3 className="game__title">{game.title}</h3>
                     <div className="game__genre">{game.genres}</div>
                 </div>
-                <div className="game__bottom">
-                    <div className="game__price">{game.price} ₽</div>
-                    <div className="game__buy" onClick={handleClick}>Add to Cart</div>
-                </div>
+                <GameBuy game={game} />
             </div>
         </div>
     )
