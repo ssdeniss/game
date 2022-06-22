@@ -15,9 +15,9 @@ export const GameBuy = ({ game }) => {
         } else {
             dispatch(setItemInCart(game));
             localStorage.setItem("games", JSON.stringify(game))
-            console.log("game", JSON.stringify(game));
-            const localData = localStorage.getItem("games")
-            return localData ? JSON.parse(localData) : []
+            // console.log("game", JSON.stringify(game));
+            // const localData = localStorage.getItem("games")
+            // return localData ? JSON.parse(localData) : []
         }
     };
     useEffect(() => {

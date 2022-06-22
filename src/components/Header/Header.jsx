@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import basket from "../../assets/basket.svg"
+import { setItemInCart } from '../../redux/reducer'
 import { calcTotalPrice } from '../Utils/Utils'
 import CartPopup from './CartPopup'
 
@@ -10,6 +11,16 @@ const Header = () => {
     const [isCartMenuVisible, setIsCartMenuVisible] = useState(false)
     const items = useSelector(state => state.cart.itemsInCart)
     const totalPrice = calcTotalPrice(items)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if(localStorage.getItem('games')){
+            const retrievedObject = localStorage.getItem('games');
+            dispatch(setItemInCart(JSON.parse(retrievedObject)));
+        }
+    }, [])
+
     return (
         <header className='header'>
             <div className="container">

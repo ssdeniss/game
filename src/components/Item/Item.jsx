@@ -7,8 +7,6 @@ import { GameBuy } from './GameBuy';
 const Item = ({ game }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const items = useSelector(state => state.cart.itemsInCart)
-    const isItemInCart = items.some(item => item.id === game.id)
     const aboutClick = () => {
         dispatch(setCurrentGame(game));
         navigate(`/app/${game.title}`)

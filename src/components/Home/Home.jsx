@@ -82,7 +82,6 @@ const Home = () => {
     return (
         <div className="container">
             <div className='home'>
-
                 {GAMES.map(game => <Item game={game} key={game.id} />)}
             </div>
         </div>
